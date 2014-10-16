@@ -11,7 +11,10 @@
 </head>
 <body ng-controller="myCtrl">
 <div class="row">
-    <div class="col-sm-12"><h3 class="label-info">{{title}}</h3></div>
+    <div class="col-sm-12">
+        <h3 class="label-info">{{title}}</h3>
+        <input type="button" ng-click="AddToList()" value="Add new list" class="btn-primary">
+    </div>
 </div>
 
 <div class="row">
@@ -36,6 +39,7 @@
     </ul>
 
 </div>
+
 
 
 <script>
@@ -99,6 +103,18 @@
 app.controller("myCtrl",function($scope){
     $scope.title="这里用来演示一个表格布局, 例如照片墙";
     $scope.tasklist=myTaskList;
+
+    $scope.AddToList=function(){
+//        alert("AddToList");
+        var o= { title:"这是新增列表",
+                    list:[{ "done":"false", "item":"细1"},
+                        { "done":"false", "item":"明2"},
+                        { "done":"false", "item":"明"},
+                        { "done":"false", "item":"4343"}
+                    ]};
+        $scope.tasklist.all.push(o);
+    };
+
 
 
 });
